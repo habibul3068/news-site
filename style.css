@@ -184,14 +184,33 @@ ul {
   background: var(--red);
   color: var(--white);
 }
-.btn-epaper {
-  background: var(--red);
-  color: var(--white);
-  border: 1px solid var(--red);
-}
 .btn-epaper:hover {
   background: var(--red-dark);
   border-color: var(--red-dark);
+}
+
+/* Mobile Header Buttons */
+.btn-login-sm,
+.btn-epaper-sm {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 16px;
+  transition: all 0.2s;
+}
+
+.btn-login-sm {
+  color: var(--red);
+  border: 1px solid var(--red);
+}
+
+.btn-epaper-sm {
+  background: var(--red);
+  color: var(--white);
+  border: 1px solid var(--red);
 }
 
 /* Desktop Navigation */
@@ -266,6 +285,7 @@ ul {
   padding: 20px;
   display: flex;
   flex-direction: column;
+  overflow-y: auto; /* Allow menu to scroll */
 }
 .mobile-menu-header {
   display: flex;
@@ -313,6 +333,12 @@ ul {
 .mobile-action-btn.epaper {
   background: var(--red);
   color: var(--white);
+}
+
+.mobile-menu-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 /* ===========================
