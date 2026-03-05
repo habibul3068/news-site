@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BDN 24 নিউজ - সত্যের আলোয়, দেশের কণ্ঠস্বর</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700;800&family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ===== NEW HEADER ===== -->
+<div class="sticky-top-wrapper">
+<header class="main-header">
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar d-none d-lg-block">
+    <div class="container-fluid px-4">
+      <div class="d-flex justify-content-between align-items-center py-2">
+        <div class="top-info d-flex gap-4">
+          <div class="info-item"><i class="fas fa-map-marker-alt"></i> <span>ঢাকা</span></div>
+          <div class="info-item"><i class="far fa-calendar"></i> <span id="currentDate">--</span></div>
+          <div class="info-item"><i class="far fa-clock"></i> <span id="currentTime">--</span></div>
+        </div>
+        <div class="top-socials d-flex gap-3">
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Branding Row -->
+  <div class="branding-row py-3 py-lg-4">
+    <div class="container-fluid px-4">
+      <div class="row align-items-center">
+        <!-- Logo -->
+        <div class="col-6 col-lg-3 order-1">
+          <a href="/" class="header-logo">
+            <img src="/img/logo.png" alt="BDN 24 News" class="logo-img">
+          </a>
+        </div>
+        
+        <!-- Actions (Desktop) -->
+        <div class="col-lg-9 d-none d-lg-flex justify-content-end align-items-center gap-3 order-2">
+          <div class="header-search-wrap">
+            <input type="text" placeholder="খবর খুঁজুন..." class="header-search-input">
+            <button class="header-search-btn"><i class="fas fa-search"></i></button>
+          </div>
+          <a href="#" class="btn-login"><i class="fas fa-user-circle"></i> লগইন</a>
+          <a href="#" class="btn-epaper">ই-পেপার</a>
+        </div>
+
+        <!-- Mobile Controls -->
+        <div class="col-6 d-flex d-lg-none justify-content-end align-items-center gap-3 order-2">
+          <button class="mobile-search-toggle"><i class="fas fa-search"></i></button>
+          <button class="menu-toggle" id="mobileMenuBtn">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Search Container -->
+  <div class="mobile-search-container d-lg-none" style="display: none; padding: 10px 15px; border-top: 1px solid var(--border); background: var(--bg);">
+    <div class="position-relative">
+      <input type="text" placeholder="খবর খুঁজুন..." class="mobile-search-input" style="width: 100%; padding: 8px 40px 8px 15px; border: 1px solid var(--border); border-radius: 20px; font-size: 14px; outline: none;">
+      <button style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted);"><i class="fas fa-search"></i></button>
+    </div>
+  </div>
+
+  <!-- Desktop Navigation -->
+  <nav class="desktop-nav d-none d-lg-block">
+    <div class="container-fluid px-4">
+      <ul class="nav-links d-flex justify-content-center gap-1">
+        <li><a href="#" class="nav-item active">সারাদেশ</a></li>
+        <li><a href="#" class="nav-item">জাতীয়</a></li>
+        <li><a href="#" class="nav-item">আন্তর্জাতিক</a></li>
+        <li><a href="#" class="nav-item">রাজনীতি</a></li>
+        <li><a href="#" class="nav-item">অর্থনীতি</a></li>
+        <li><a href="#" class="nav-item">চিকিৎসা</a></li>
+        <li><a href="#" class="nav-item">ভিডিও</a></li>
+        <li><a href="#" class="nav-item">খেলা</a></li>
+        <li><a href="#" class="nav-item">বিনোদন</a></li>
+        <li><a href="#" class="nav-item">নির্বাচন</a></li>
+        <li><a href="#" class="nav-item">সম্পাদকীয়</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+    <div class="mobile-menu-content">
+      <div class="mobile-menu-header">
+        <img src="/img/logo.png" alt="BDN 24" class="mobile-logo">
+        <button class="close-menu" id="closeMenuBtn">&times;</button>
+      </div>
+      <div class="mobile-menu-body">
+        <ul class="mobile-nav-links">
+          <li><a href="#">সারাদেশ</a></li>
+          <li><a href="#">জাতীয়</a></li>
+          <li><a href="#">আন্তর্জাতিক</a></li>
+          <li><a href="#">রাজনীতি</a></li>
+          <li><a href="#">অর্থনীতি</a></li>
+          <li><a href="#">চিকিৎসা</a></li>
+          <li><a href="#">ভিডিও</a></li>
+          <li><a href="#">খেলা</a></li>
+          <li><a href="#">বিনোদন</a></li>
+          <li><a href="#">নির্বাচন</a></li>
+          <li><a href="#">সম্পাদকীয়</a></li>
+        </ul>
+        <div class="mobile-actions mt-4">
+          <a href="#" class="mobile-action-btn">লগইন</a>
+          <a href="#" class="mobile-action-btn epaper">ই-পেপার</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== NOTICE BAR ===== -->
+<div class="ticker-bar" id="noticeBar">
+  <div class="container-fluid px-3">
+    <div class="d-flex align-items-center">
+      <span class="badge-label ticker-badge">নোটিস</span>
+      <div class="ticker-wrapper">
+        <div class="notice-text">
+          <span>সাবস্ক্রাইব করুন। সব খবর সবার আগে পেতে আমাদের সাথেই থাকুন। ★ সারাদেশে প্রতিনিধি নিয়োগ দিচ্ছে BDN 24 NEWS — আগ্রহীরা যোগাযোগ করুন। ★ সত্যের আলোয়, দেশের কণ্ঠস্বর — BDN 24 নিউজের সাথেই থাকুন। &nbsp;&nbsp;&nbsp;&nbsp; সাবস্ক্রাইব করুন। সব খবর সবার আগে পেতে আমাদের সাথেই থাকুন। ★ সারাদেশে প্রতিনিধি নিয়োগ দিচ্ছে BDN 24 NEWS — আগ্রহীরা যোগাযোগ করুন। ★ সত্যের আলোয়, দেশের কণ্ঠস্বর — BDN 24 নিউজের সাথেই থাকুন।</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== BREAKING NEWS TICKER ===== -->
+<div class="ticker-bar">
+  <div class="container-fluid px-3">
+    <div class="d-flex align-items-center">
+      <span class="badge-label ticker-badge">সর্বশেষ</span>
+      <div class="ticker-wrapper">
+        <div class="ticker-content" id="tickerContent">
+          <a href="#" class="ticker-link">★ রাজধানীতে ভোরে ভূমিকম্প অনুভূত, রিখটার স্কেলে মাত্রা ৪.২</a>
+          <a href="#" class="ticker-link">★ ড. ইউনূস সরকারের ১০০ দিনের কর্মপরিকল্পনা ঘোষণা</a>
+          <a href="#" class="ticker-link">★ বাংলাদেশ-ভারত সীমান্তে উত্তেজনা প্রশমিত হয়েছে: বিজিবি</a>
+          <a href="#" class="ticker-link">★ পোশাক রপ্তানিতে রেকর্ড — মার্চে আয় ৫.২ বিলিয়ন ডলার</a>
+          <a href="#" class="ticker-link">★ জাতীয় ক্রিকেট দল শ্রীলঙ্কা সফরে রওনা হচ্ছে কাল</a>
+          <a href="#" class="ticker-link">★ ঢাকা মেট্রোরেলের নতুন রুট উদ্বোধন করলেন প্রধান উপদেষ্টা</a>
+          <a href="#" class="ticker-link">★ রাজশাহীতে বিএনপির মহাসমাবেশ, লক্ষাধিক নেতাকর্মী উপস্থিত</a>
+          <a href="#" class="ticker-link">★ চট্টগ্রাম বন্দরে কনটেইনার জট নিরসনে বিশেষ ব্যবস্থা নেওয়া হচ্ছে</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ===== HERO BANNER ===== -->
+<div class="hero-banner">
+  <div class="container-fluid px-3">
+    <div class="hero-inner">
+      <img src="/img/logo.png" alt="BDN 24 News" class="hero-logo-img"/>
+      <div class="hero-tagline">সত্যের আলোয়, দেশের কণ্ঠস্বর</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FEATURED NEWS ===== -->
+<div class="section-wrapper py-3">
+  <div class="container-fluid px-3">
+    <div class="row g-3">
+
+      <!-- Left stack -->
+      <div class="col-lg-3 col-md-4">
+        <div class="d-flex flex-column gap-3">
+          <a href="#" class="news-card-sm text-decoration-none">
+            <img src="https://picsum.photos/seed/news1/400/220" alt="news" class="news-img-sm"/>
+            <p class="news-title-sm mt-2">মানবিক সহায়তায় সিন্দুকছড়ি জোনে সেনাবাহিনীর বিশেষ অভিযান</p>
+            <span class="news-meta"><i class="far fa-clock"></i> ২২ ঘণ্টা আগে</span>
+          </a>
+          <a href="#" class="news-card-sm text-decoration-none">
+            <img src="https://picsum.photos/seed/news2/400/220" alt="news" class="news-img-sm"/>
+            <p class="news-title-sm mt-2">জাতীয় পার্টির নতুন কমিটি ঘোষণা, চমক দিলেন জিএম কাদের</p>
+            <span class="news-meta"><i class="far fa-clock"></i> ১ দিন আগে</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Center featured -->
+      <div class="col-lg-6 col-md-8">
+        <a href="#" class="news-card-featured text-decoration-none">
+          <div class="position-relative">
+            <img src="https://picsum.photos/seed/featured1/800/450" alt="featured" class="news-img-featured"/>
+            <span class="featured-category-badge">জাতীয়</span>
+          </div>
+          <div class="p-3">
+            <h2 class="featured-title">রামগড়ের বিভিন্ন সরকারি দপ্তরের কর্মকর্তাদের সাথে বিভাগীয় কমিশনারের মতবিনিময় সভা অনুষ্ঠিত</h2>
+            <p class="featured-excerpt">বিভাগীয় কমিশনার জনাব মোহাম্মদ ফয়জুল হক বলেন, সরকারি সেবা প্রদানে স্বচ্ছতা ও জবাবদিহিতা নিশ্চিত করতে হবে। প্রতিটি দপ্তরকে জনবান্ধব করে গড়ে তুলতে হবে।</p>
+            <span class="news-meta"><i class="far fa-clock"></i> ৩ ঘণ্টা আগে</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Right sidebar -->
+      <div class="col-lg-3">
+        <div class="sidebar-news-list">
+          <a href="#" class="sidebar-news-item text-decoration-none">
+            <img src="https://picsum.photos/seed/side1/120/80" alt=""/>
+            <div class="sidebar-news-text">দেশের নবগঠিত কমিটির পরিচিতি সভা ও মহিলা সমাবেশ অনুষ্ঠিত</div>
+          </a>
+          <a href="#" class="sidebar-news-item text-decoration-none">
+            <img src="https://picsum.photos/seed/side2/120/80" alt=""/>
+            <div class="sidebar-news-text">গুইমারায় সম্প্রীতি আলোচনা সভা করেছে উপজেলা বিএনপি</div>
+          </a>
+          <a href="#" class="sidebar-news-item text-decoration-none">
+            <img src="https://picsum.photos/seed/side3/120/80" alt=""/>
+            <div class="sidebar-news-text">রামগড়ে ইনকিলাব মেলের ওসমান হাদী হত্যার প্রতিবাদে বিক্ষোভ মিছিল</div>
+          </a>
+          <a href="#" class="sidebar-news-item text-decoration-none">
+            <img src="https://picsum.photos/seed/side4/120/80" alt=""/>
+            <div class="sidebar-news-text">সিলেটে হরতাল চলাকালে গণপরিবহনে হামলা, ৫ জন আহত</div>
+          </a>
+          <a href="#" class="sidebar-news-item text-decoration-none">
+            <img src="https://picsum.photos/seed/side5/120/80" alt=""/>
+            <div class="sidebar-news-text">কুমিল্লায় নতুন শিল্প এলাকা স্থাপনের পরিকল্পনা চূড়ান্ত</div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== DIVIDER BANNER ===== -->
+<div class="divider-banner my-2">
+  <div class="container-fluid px-3">
+    <div class="divider-inner d-flex align-items-center justify-content-between">
+      <div class="divider-tagline">সত্যের আলোয়, দেশের কণ্ঠস্বর</div>
+      <img src="/img/logo.png" alt="BDN 24" class="divider-logo-img"/>
+    </div>
+  </div>
+</div>
+
+<!-- ===== NEWS GRID ===== -->
+<div class="section-wrapper bg-light-subtle py-4">
+  <div class="container-fluid px-3">
+    <div class="row g-3">
+
+      <div class="col-lg-4 col-md-6">
+        <a href="#" class="news-grid-card text-decoration-none">
+          <img src="https://picsum.photos/seed/grid1/400/220" alt=""/>
+          <div class="ngc-body">
+            <span class="ngc-cat">সারাদেশ</span>
+            <h5 class="ngc-title">রামগড়ে যুব রেড ক্রিসেন্টের ইফতার ও দোয়া মাহফিল অনুষ্ঠিত</h5>
+            <p class="ngc-excerpt">স্থানীয় যুব সংগঠনের উদ্যোগে বার্ষিক ইফতার মাহফিল অনুষ্ঠিত হয়েছে। অনুষ্ঠানে শতাধিক মানুষ অংশ নেন।</p>
+            <span class="news-meta"><i class="far fa-clock"></i> ৫ ঘণ্টা আগে</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <a href="#" class="news-grid-card text-decoration-none">
+          <img src="https://picsum.photos/seed/grid2/400/220" alt=""/>
+          <div class="ngc-body">
+            <span class="ngc-cat">জাতীয়</span>
+            <h5 class="ngc-title">মানবিক সহায়তায় সিন্দুকছড়িতে বিশেষ ত্রাণ বিতরণ কর্মসূচি</h5>
+            <p class="ngc-excerpt">পার্বত্য চট্টগ্রামের প্রত্যন্ত এলাকায় মানবিক সহায়তা পৌঁছে দিতে সেনাবাহিনী ও এনজিও যৌথভাবে কাজ করছে।</p>
+            <span class="news-meta"><i class="far fa-clock"></i> ৮ ঘণ্টা আগে</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <a href="#" class="news-grid-card text-decoration-none">
+          <img src="https://picsum.photos/seed/grid3/400/220" alt=""/>
+          <div class="ngc-body">
+            <span class="ngc-cat">রাজনীতি</span>
+            <h5 class="ngc-title">জাগপা ছাত্রলীগের নাম পরিবর্তন করে নতুন সংগঠন গঠন</h5>
+            <p class="ngc-excerpt">নতুন নেতৃত্বে পুনর্গঠিত সংগঠনটি আগামী জাতীয় নির্বাচনকে সামনে রেখে কর্মপরিকল্পনা নির্ধারণ করেছে।</p>
+            <span class="news-meta"><i class="far fa-clock"></i> ১২ ঘণ্টা আগে</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <a href="#" class="news-grid-card text-decoration-none">
+          <img src="https://picsum.photos/seed/grid4/400/220" alt=""/>
+          <div class="ngc-body">
+            <span class="ngc-cat">অর্থনীতি</span>
+            <h5 class="ngc-title">খাগড়াছড়ির বিভিন্ন পাহাড়ি আমবাগান ভরে গেছে আমের মুকুলে</h5>
+            <p class="ngc-excerpt">এ বছর আমের ফলন ভালো হওয়ার আশা করছেন চাষিরা। বাজারে সরবরাহ বাড়লে দাম কমবে বলে মনে করছেন বিশ্লেষকরা।</p>
+            <span class="news-meta"><i class="far fa-clock"></i> ১৫ ঘণ্টা আগে</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <a href="#" class="news-grid-card text-decoration-none">
+          <img src="https://picsum.photos/seed/grid5/400/220" alt=""/>
+          <div class="ngc-body">
+            <span class="ngc-cat">আন্তর্জাতিক</span>
+            <h5 class="ngc-title">বিএনপি নেতার বাড়িতে দুর্বৃত্তদের হামলা ও বোমা বিস্ফোরণ</h5>
+            <p class="ngc-excerpt">রাতের অন্ধকারে সংঘটিত এই হামলায় বাড়ির কিছু অংশ ক্ষতিগ্রস্ত হয়েছে। পুলিশ তদন্ত শুরু করেছে।</p>
+            <span class="news-meta"><i class="far fa-clock"></i> ১ দিন আগে</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <a href="#" class="news-grid-card text-decoration-none">
+          <img src="https://picsum.photos/seed/grid6/400/220" alt=""/>
+          <div class="ngc-body">
+            <span class="ngc-cat">শিক্ষা</span>
+            <h5 class="ngc-title">ঢাকা বিশ্ববিদ্যালয়ে ভর্তি পরীক্ষার নতুন নিয়মাবলী ঘোষণা</h5>
+            <p class="ngc-excerpt">এ বছর থেকে ভর্তি পরীক্ষায় MCQ এর পাশাপাশি লিখিত অংশও যুক্ত হচ্ছে। পরীক্ষার তারিখ জুনে নির্ধারণ করা হয়েছে।</p>
+            <span class="news-meta"><i class="far fa-clock"></i> ২ দিন আগে</span>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== VIDEO SECTION ===== -->
+<div class="section-wrapper py-4">
+  <div class="container-fluid px-3">
+    <div class="section-header d-flex align-items-center justify-content-between mb-3">
+      <span class="section-badge">ভিডিও</span>
+      <a href="#" class="more-link">আরও <i class="fas fa-angle-right"></i></a>
+    </div>
+    <div class="row g-3">
+
+      <div class="col-lg-3 col-md-6">
+        <a href="#" class="video-card text-decoration-none">
+          <div class="video-thumb-wrap">
+            <img src="https://picsum.photos/seed/vid1/400/225" alt=""/>
+            <div class="play-btn"><i class="fas fa-play"></i></div>
+            <div class="video-overlay-title">খাগড়াছড়ির মাটিরাঙায় ভয়াবহ বাস দুর্ঘটনায় ২ জন নিহত, আহত অন্তত ১০ জন</div>
+          </div>
+          <p class="video-caption">খাগড়াছড়ির মাটিরাঙায় ভয়াবহ বাস দুর্ঘটনা: ২ জন নিহত</p>
+        </a>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <a href="#" class="video-card text-decoration-none">
+          <div class="video-thumb-wrap">
+            <img src="https://picsum.photos/seed/vid2/400/225" alt=""/>
+            <div class="play-btn"><i class="fas fa-play"></i></div>
+            <div class="video-overlay-title">জাকসু নির্বাচনে ভিপি, জিএস ও এজিএস পদে দাখিল প্রার্থীদের জয়ের সম্ভাবনা</div>
+          </div>
+          <p class="video-caption">জাকসু নির্বাচনে ভিপি, জিএস ও এজিএস পদে দাখিল প্রার্থীদের জয়ের সম্ভাবনা</p>
+        </a>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <a href="#" class="video-card text-decoration-none">
+          <div class="video-thumb-wrap">
+            <img src="https://picsum.photos/seed/abc123/400/225" alt=""/>
+            <div class="play-btn"><i class="fas fa-play"></i></div>
+            <div class="video-overlay-title">জাকসু নির্বাচন নিয়ে শিবির নেতার হুঁশিয়ারি</div>
+          </div>
+          <p class="video-caption">জাকসু নির্বাচন নিয়ে শিবির নেতার হুঁশিয়ারি</p>
+        </a>
+      </div>
+
+      <div class="col-lg-3 col-md-6">
+        <a href="#" class="video-card text-decoration-none">
+          <div class="video-thumb-wrap">
+            <img src="https://picsum.photos/seed/vid4/400/225" alt=""/>
+            <div class="play-btn"><i class="fas fa-play"></i></div>
+            <div class="video-overlay-title">ভিপি জিএস হওয়ার পর যেসব সুবিধা পাবেন সাদিক ও ফরহাদ</div>
+          </div>
+          <p class="video-caption">ভিপি জিএস হওয়ার পর যেসব সুবিধা পাবেন সাদিক ও ফরহাদ</p>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== জাতীয় + আন্তর্জাতিক ===== -->
+<div class="section-wrapper bg-light-subtle py-4">
+  <div class="container-fluid px-3">
+    <div class="row g-4">
+
+      <div class="col-lg-6">
+        <div class="section-header d-flex align-items-center justify-content-between mb-3">
+          <span class="section-badge">জাতীয়</span>
+          <a href="#" class="more-link">আরও <i class="fas fa-angle-right"></i></a>
+        </div>
+        <a href="#" class="cat-big-card mb-3 text-decoration-none d-block">
+          <img src="https://picsum.photos/seed/nat1/600/300" alt=""/>
+          <div class="cat-big-overlay">
+            <h5>প্রতিশ্রুতি অনুযায়ী চাঁদাবাজি বন্ধ হতে শুরু করেছে: প্রতিমন্ত্রী নুরুল হক</h5>
+          </div>
+        </a>
+        <div class="row g-2">
+          <div class="col-6">
+            <a href="#" class="cat-small-card text-decoration-none d-block">
+              <img src="https://picsum.photos/seed/nat2/300/180" alt=""/>
+              <p>বীরমুক্তিযোদ্ধা নূর মোহাম্মদ শেখের জন্মদিন আজ</p>
+            </a>
+          </div>
+          <div class="col-6">
+            <a href="#" class="cat-small-card text-decoration-none d-block">
+              <img src="https://picsum.photos/seed/nat3/300/180" alt=""/>
+              <p>মব 'আতাতায়ে' সরকারি বাসভবন ছাড়তে 'অনীহা' সাবেক উপমন্ত্রীদের</p>
+            </a>
+          </div>
+          <div class="col-6">
+            <a href="#" class="cat-small-card text-decoration-none d-block">
+              <img src="https://picsum.photos/seed/nat4/300/180" alt=""/>
+              <p>পিলখানা হত্যাকাণ্ড: বিচারের অপেক্ষায় শহীদ সেনা পরিবারগুলো</p>
+            </a>
+          </div>
+          <div class="col-6">
+            <a href="#" class="cat-small-card text-decoration-none d-block">
+              <img src="https://picsum.photos/seed/nat5/300/180" alt=""/>
+              <p>দেশ ও জনগণের স্বার্থে বিরুদ্ধে আমরা ঐক্যবদ্ধভাবে রুখে দাঁড়াবো: প্রধানমন্ত্রী</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="section-header d-flex align-items-center justify-content-between mb-3">
+          <span class="section-badge green">আন্তর্জাতিক</span>
+          <a href="#" class="more-link">আরও <i class="fas fa-angle-right"></i></a>
+        </div>
+        <a href="#" class="cat-big-card mb-3 text-decoration-none d-block">
+          <img src="https://picsum.photos/seed/intl1/600/300" alt=""/>
+          <div class="cat-big-overlay">
+            <h5>খামেনির কন্যা, জামাতা, নাতি ও পুত্রবধু নিহত: রয়টার্স</h5>
+          </div>
+        </a>
+        <div class="list-news-items">
+          <a href="#" class="list-news-item text-decoration-none">
+            <img src="https://picsum.photos/seed/intl2/80/55" alt=""/>
+            <p>খামেনির মৃত্যুতে ইরানে ৪০ দিনের রাষ্ট্রীয় শোক পালন শুরু</p>
+          </a>
+          <a href="#" class="list-news-item text-decoration-none">
+            <img src="https://picsum.photos/seed/intl3/80/55" alt=""/>
+            <p>ভারতের পুনে থেকে ১১ 'বাংলাদেশি' নারী উদ্ধার, তদন্তে পুলিশ</p>
+          </a>
+          <a href="#" class="list-news-item text-decoration-none">
+            <img src="https://picsum.photos/seed/intl4/80/55" alt=""/>
+            <p>মারা গেছেন বাংলাদেশে নিযুক্ত সাবেক মার্কিন রাষ্ট্রদূত উইলিয়াম বি মাইলাম</p>
+          </a>
+          <a href="#" class="list-news-item text-decoration-none">
+            <img src="https://picsum.photos/seed/intl5/80/55" alt=""/>
+            <p>গাজায় ইসরায়েলি হামলায় আরও ৪৫ জন নিহত, তীব্র নিন্দা জানাল জাতিসংঘ</p>
+          </a>
+          <a href="#" class="list-news-item text-decoration-none">
+            <img src="https://picsum.photos/seed/intl6/80/55" alt=""/>
+            <p>রাশিয়া-ইউক্রেন যুদ্ধবিরতির প্রস্তাব নিয়ে আলোচনা চলছে: ট্রাম্প</p>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== রাজনীতি + অর্থনীতি + খেলা ===== -->
+<div class="section-wrapper py-4">
+  <div class="container-fluid px-3">
+    <div class="row g-4">
+
+      <div class="col-lg-4">
+        <div class="section-header d-flex align-items-center justify-content-between mb-3">
+          <span class="section-badge">রাজনীতি</span>
+          <a href="#" class="more-link">আরও <i class="fas fa-angle-right"></i></a>
+        </div>
+        <a href="#" class="cat-big-card mb-2 text-decoration-none d-block">
+          <img src="https://picsum.photos/seed/pol1/500/260" alt=""/>
+          <div class="cat-big-overlay"><h6>জাগপা ছাত্রলীগের নাম পরিবর্তন</h6></div>
+        </a>
+        <div class="list-news-items-sm">
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-danger" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>আমি লিখিত জবাব দেব না: শোকজ প্রসঙ্গে ছাত্রদল নেতা হামিম</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-danger" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>রাজধানীতে নিষিদ্ধ আ.লীগের ঝটিকা মিছিল, গ্রেপ্তার ৮</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-danger" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>বিএনপি প্রতিহিংসা নয়, বহুদলীয় গণতন্ত্রে বিশ্বাস করে: ড. মঈন খান</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-danger" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>দ্রুত স্থানীয় নির্বাচন চায় এনসিপি, নেতাকর্মীদের প্রস্তুতি নিতে নির্দেশনা</p></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="section-header d-flex align-items-center justify-content-between mb-3">
+          <span class="section-badge green">অর্থনীতি</span>
+          <a href="#" class="more-link">আরও <i class="fas fa-angle-right"></i></a>
+        </div>
+        <a href="#" class="cat-big-card mb-2 text-decoration-none d-block">
+          <img src="https://picsum.photos/seed/eco1/500/260" alt=""/>
+          <div class="cat-big-overlay"><h6>খাগড়াছড়ির বিভিন্ন পাহাড়ি আমবাগান ভরে গেছে আমের মুকুলে</h6></div>
+        </a>
+        <div class="list-news-items-sm">
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-success" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>চাঁদাবাজি বন্ধ না হলে ব্যবসা বন্ধ করে চলে যাব</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-success" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>রমজানে ১০ লাখ পরিবারকে কম দামে দুধ-ডিম ও মাংস দেবে সরকার</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-success" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>পোশাক রপ্তানিতে রেকর্ড, মার্চে আয় ৫.২ বিলিয়ন ডলার</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-success" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>বাংলাদেশের পাশে সম্পূর্ণভাবে থাকার ঘোষণা পাকিস্তান প্রধানমন্ত্রীর</p></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="section-header d-flex align-items-center justify-content-between mb-3">
+          <span class="section-badge" style="background:#1a6b3a">খেলা</span>
+          <a href="#" class="more-link">আরও <i class="fas fa-angle-right"></i></a>
+        </div>
+        <a href="#" class="cat-big-card mb-2 text-decoration-none d-block">
+          <img src="https://picsum.photos/seed/sport1/500/260" alt=""/>
+          <div class="cat-big-overlay"><h6>ইফতির সেঞ্চুরিতে ৪৫ রানের জয় খাগড়াছড়ির</h6></div>
+        </a>
+        <div class="list-news-items-sm">
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle" style="font-size:6px;color:#1a6b3a;margin-top:6px;flex-shrink:0"></i><p>সাকিবের ফেরার প্রক্রিয়া শুরু হয়েছে আজ</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle" style="font-size:6px;color:#1a6b3a;margin-top:6px;flex-shrink:0"></i><p>ভারত ম্যাচ বর্জনের আহ্বান থেকে সরে এলো পাকিস্তান</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle" style="font-size:6px;color:#1a6b3a;margin-top:6px;flex-shrink:0"></i><p>বাংলাদেশকে ক্ষতিপূরণ দেওয়াসহ তিন দাবি মানলে ভারত ম্যাচ খেলবে পাকিস্তান</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle" style="font-size:6px;color:#1a6b3a;margin-top:6px;flex-shrink:0"></i><p>জাতীয় ক্রিকেট দল শ্রীলঙ্কা সফরে রওনা হচ্ছে কাল</p></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== AD BANNER ===== -->
+<div class="ad-banner my-2">
+  <div class="container-fluid px-3">
+    <div class="ad-inner">
+      <div class="ad-logo-wrap">
+        <img src="/img/logo.png" alt="BDN 24" class="ad-logo-img"/>
+      </div>
+      <div class="ad-content">
+        <h2 class="ad-seeking">আমরা খুঁজছি</h2>
+        <div class="ad-position">জেলা / উপজেলা প্রতিনিধি</div>
+        <div class="ad-requirements">
+          <h5>প্রয়োজনীয় যোগ্যতা/দক্ষতা</h5>
+          <ul>
+            <li>যেকোনো বিষয়ে স্নাতক/স্নাতকোত্তর</li>
+            <li>সংশ্লিষ্ট কাজে এক বছরের অভিজ্ঞতা</li>
+            <li>শুদ্ধ বাংলা লেখায় পারদর্শিতা</li>
+            <li>আধুনিক সাংবাদিকতার জন্য প্রয়োজনীয় প্রযুক্তিগত দক্ষতা</li>
+          </ul>
+        </div>
+        <div class="ad-contact">
+          আবেদনের ঠিকানা: আরামবাগ, মতিঝিল, ঢাকা-১০০০ | মোবা: +৮৮০১৮২৮৯১৫০২০<br/>
+          ইমেইল: info@bdn24news.com | contact@bdn24news.com
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== বিনোদন + অনলাইন জরিপ ===== -->
+<div class="section-wrapper bg-light-subtle py-4">
+  <div class="container-fluid px-3">
+    <div class="row g-4">
+
+      <div class="col-lg-8">
+        <div class="section-header d-flex align-items-center justify-content-between mb-3">
+          <span class="section-badge">বিনোদন</span>
+          <a href="#" class="more-link">আরও <i class="fas fa-angle-right"></i></a>
+        </div>
+        <div class="row g-3">
+          <div class="col-md-5">
+            <a href="#" class="entertainment-main-card text-decoration-none d-block">
+              <img src="https://picsum.photos/seed/ent0/500/300" alt=""/>
+              <div class="ent-overlay">
+                <h5>ওটিটিতে যা দেখবেন এই সপ্তাহে — সেরা ৫টি বাংলাদেশি নাটক ও ওয়েব সিরিজ</h5>
+                <p>বাংলাদেশের জনপ্রিয় স্ট্রিমিং প্ল্যাটফর্মগুলোতে এই সপ্তাহে নতুন কন্টেন্ট যুক্ত হয়েছে।</p>
+              </div>
+            </a>
+          </div>
+          <div class="col-md-7">
+            <div class="row g-2">
+              <div class="col-6">
+                <a href="#" class="ent-thumb-card text-decoration-none d-block">
+                  <img src="https://picsum.photos/seed/ent1/300/200" alt=""/>
+                  <p>কান চলচ্চিত্র উৎসবে বাংলাদেশের চলচ্চিত্র মনোনয়ন পেল</p>
+                </a>
+              </div>
+              <div class="col-6">
+                <a href="#" class="ent-thumb-card text-decoration-none d-block">
+                  <img src="https://picsum.photos/seed/ent2/300/200" alt=""/>
+                  <p>আমি শাকিব খানের মতো হতে চাই — নতুন নায়ক রাফি</p>
+                </a>
+              </div>
+              <div class="col-6">
+                <a href="#" class="ent-thumb-card text-decoration-none d-block">
+                  <img src="https://picsum.photos/seed/ent3/300/200" alt=""/>
+                  <p>ইন্ডাস্ট্রিতে নারীপ্রধান সিনেমাগুলোকে আলাদা করে গুরুত্ব দেওয়া উচিত</p>
+                </a>
+              </div>
+              <div class="col-6">
+                <a href="#" class="ent-thumb-card text-decoration-none d-block">
+                  <img src="https://picsum.photos/seed/ent4/300/200" alt=""/>
+                  <p>শাকিবের বিশেষ সম্মাননায় অপু-বুবলীর পাল্টাপাল্টি স্ট্যাটাস</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Poll -->
+      <div class="col-lg-4">
+        <div class="section-header d-flex align-items-center justify-content-between mb-3">
+          <span class="section-badge green">অনলাইন জরিপ</span>
+          <a href="#" class="more-link">আরও <i class="fas fa-angle-right"></i></a>
+        </div>
+        <div class="poll-card">
+          <div class="poll-date">০৫ মার্চ ২০২৬, ১২:৫০ পিএম</div>
+          <img src="https://picsum.photos/seed/poll1/300/160" alt="" class="poll-img mb-2"/>
+          <p class="poll-question">ফেব্রুয়ারিতে নির্বাচনের বিষয়ে কি আপনি একমত?</p>
+          <div class="poll-options" id="pollOptions">
+            <label class="poll-option">
+              <input type="radio" name="poll" value="হ্যাঁ" onchange="vote('হ্যাঁ')"/> হ্যাঁ
+              <div class="poll-bar"><div class="poll-fill" id="bar-yes" style="width:60%"></div></div>
+              <span class="poll-pct" id="pct-yes">৬০%</span>
+            </label>
+            <label class="poll-option">
+              <input type="radio" name="poll" value="না" onchange="vote('না')"/> না
+              <div class="poll-bar"><div class="poll-fill red" id="bar-no" style="width:25%"></div></div>
+              <span class="poll-pct" id="pct-no">২৫%</span>
+            </label>
+            <label class="poll-option">
+              <input type="radio" name="poll" value="মতামত নেই" onchange="vote('মতামত নেই')"/> মতামত নেই
+              <div class="poll-bar"><div class="poll-fill gray" id="bar-neutral" style="width:15%"></div></div>
+              <span class="poll-pct" id="pct-neutral">১৫%</span>
+            </label>
+          </div>
+          <div class="poll-total">মোট ভোটদাতা: <strong id="voteCount">৬</strong> জন</div>
+          <div class="poll-share d-flex gap-2 mt-2">
+            <a href="#" class="social-icon facebook sm"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon" style="background:#25D366;width:24px;height:24px;font-size:10px"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" class="social-icon email sm"><i class="fas fa-envelope"></i></a>
+            <a href="#" class="social-icon linkedin sm"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== সম্পাদকীয় ===== -->
+<div class="section-wrapper py-4">
+  <div class="container-fluid px-3">
+    <div class="section-header d-flex align-items-center justify-content-between mb-3">
+      <span class="section-badge">সম্পাদকীয়</span>
+      <a href="#" class="more-link">আরও <i class="fas fa-angle-right"></i></a>
+    </div>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <a href="#" class="editorial-main text-decoration-none d-block">
+          <img src="https://picsum.photos/seed/edit1/600/340" alt=""/>
+          <div class="editorial-body">
+            <h4>পাহাড়ে সাধারণ মানুষের বন্ধু সেনাবাহিনী: শক্ত গোষ্ঠী ও স্বার্থান্বেষী মহলের বিরুদ্ধে অনন্য ভূমিকা</h4>
+            <p>পার্বত্য চট্টগ্রামে শান্তি ও উন্নয়নের জন্য সেনাবাহিনীর ভূমিকা অপরিসীম। স্থানীয় জনগণের আস্থা ও ভালোবাসা অর্জন করে তারা নিরলসভাবে কাজ করে যাচ্ছে।</p>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6">
+        <div class="editorial-list">
+          <a href="#" class="editorial-item text-decoration-none">
+            <img src="https://picsum.photos/seed/edit2/100/70" alt=""/>
+            <div>
+              <h6>ইতিহাসের এক মহাকাব্যের অবসান</h6>
+              <span class="news-meta"><i class="far fa-clock"></i> ২ দিন আগে</span>
+            </div>
+          </a>
+          <a href="#" class="editorial-item text-decoration-none">
+            <img src="https://picsum.photos/seed/edit3/100/70" alt=""/>
+            <div>
+              <h6>গণতন্ত্রের পথে বাংলাদেশ: প্রতিবন্ধকতা ও সম্ভাবনা</h6>
+              <span class="news-meta"><i class="far fa-clock"></i> ৩ দিন আগে</span>
+            </div>
+          </a>
+          <a href="#" class="editorial-item text-decoration-none">
+            <img src="https://picsum.photos/seed/edit4/100/70" alt=""/>
+            <div>
+              <h6>শিক্ষা সংকট থেকে উত্তরণের পথ কোথায়?</h6>
+              <span class="news-meta"><i class="far fa-clock"></i> ৪ দিন আগে</span>
+            </div>
+          </a>
+          <a href="#" class="editorial-item text-decoration-none">
+            <img src="https://picsum.photos/seed/edit5/100/70" alt=""/>
+            <div>
+              <h6>তরুণ প্রজন্মের কাছে প্রত্যাশা ও দায়িত্ব</h6>
+              <span class="news-meta"><i class="far fa-clock"></i> ৫ দিন আগে</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== স্বাস্থ্য + আইটি বিশ্ব + বিজ্ঞান ===== -->
+<div class="section-wrapper bg-light-subtle py-4">
+  <div class="container-fluid px-3">
+    <div class="row g-4">
+
+      <div class="col-lg-4">
+        <div class="section-header d-flex align-items-center justify-content-between mb-3">
+          <span class="section-badge">স্বাস্থ্য ও চিকিৎসা</span>
+          <a href="#" class="more-link">আরও <i class="fas fa-angle-right"></i></a>
+        </div>
+        <a href="#" class="cat-big-card mb-2 text-decoration-none d-block">
+          <img src="https://picsum.photos/seed/health1/500/260" alt=""/>
+          <div class="cat-big-overlay"><h6>অর্ধকোটি টাকাসহ আটক জেলা জামায়াতের আমির হাসপাতালে ভর্তি</h6></div>
+        </a>
+        <div class="list-news-items-sm">
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-danger" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>সিভিকেটর বাধায় আটক অ্যাম্বুলেন্স, পথেই বৃদ্ধের মৃত্যু</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-danger" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>হাসপাতালের অপারেশন থিয়েটারে রান্না, দায় কেবলই নার্সের?</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-danger" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>সারাদেশে বাড়ছে ঠান্ডাজনিত রোগ, প্রায় এক লাখ রোগী হাসপাতালে ভর্তি</p></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="section-header d-flex align-items-center justify-content-between mb-3">
+          <span class="section-badge green">আইটি বিশ্ব</span>
+          <a href="#" class="more-link">আরও <i class="fas fa-angle-right"></i></a>
+        </div>
+        <div class="list-news-items-sm mt-2">
+          <a href="#" class="lni-sm text-decoration-none">
+            <img src="https://picsum.photos/seed/it1/60/45" alt="" style="border-radius:4px;min-width:60px;height:45px;object-fit:cover;flex-shrink:0"/>
+            <p>বন্ধ হচ্ছে অবৈধ ফোন, বৈধ করবেন যেভাবে</p>
+          </a>
+          <a href="#" class="lni-sm text-decoration-none">
+            <img src="https://picsum.photos/seed/it2/60/45" alt="" style="border-radius:4px;min-width:60px;height:45px;object-fit:cover;flex-shrink:0"/>
+            <p>পুরোনো রাউটারকে বানিয়ে ফেলুন ওয়াই-ফাই এক্সটেন্ডার</p>
+          </a>
+          <a href="#" class="lni-sm text-decoration-none">
+            <img src="https://picsum.photos/seed/it3/60/45" alt="" style="border-radius:4px;min-width:60px;height:45px;object-fit:cover;flex-shrink:0"/>
+            <p>সোশ্যাল মিডিয়ায় মেয়েরা কেন বেশি বিপর্যস্ত, কী বলছে গবেষণা?</p>
+          </a>
+          <a href="#" class="lni-sm text-decoration-none">
+            <img src="https://picsum.photos/seed/it4/60/45" alt="" style="border-radius:4px;min-width:60px;height:45px;object-fit:cover;flex-shrink:0"/>
+            <p>অন্য কেউ আপনার জিমেইল ব্যবহার করছে? এখনই ব্যবস্থা না নিলে হ্যাকিংয়ের ঝুঁকি!</p>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="section-header d-flex align-items-center justify-content-between mb-3">
+          <span class="section-badge" style="background:#1a6b3a">বিজ্ঞান ও তথ্যপ্রযুক্তি</span>
+          <a href="#" class="more-link">আরও <i class="fas fa-angle-right"></i></a>
+        </div>
+        <a href="#" class="cat-big-card mb-2 text-decoration-none d-block">
+          <img src="https://picsum.photos/seed/sci1/500/200" alt=""/>
+          <div class="cat-big-overlay"><h6>ইন্টারনেটে বড় খবর, নতুন গতি প্যাকেজ ঘোষণা করল বিটিসিএল</h6></div>
+        </a>
+        <div class="list-news-items-sm">
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle" style="font-size:6px;color:#1a6b3a;margin-top:6px;flex-shrink:0"></i><p>কৃত্রিম বুদ্ধিমত্তা দিয়ে এখন কৃষিতে বিপ্লব আনছে বাংলাদেশ</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle" style="font-size:6px;color:#1a6b3a;margin-top:6px;flex-shrink:0"></i><p>মহাকাশে প্রথম বাংলাদেশি নভোচারী পাঠানোর স্বপ্ন দেখছে বিমান বাহিনী</p></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== অপরাধ ===== -->
+<div class="section-wrapper py-4">
+  <div class="container-fluid px-3">
+    <div class="section-header d-flex align-items-center justify-content-between mb-3">
+      <span class="section-badge">অপরাধ</span>
+      <a href="#" class="more-link">আরও <i class="fas fa-angle-right"></i></a>
+    </div>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <a href="#" class="crime-featured text-decoration-none d-block">
+          <img src="https://picsum.photos/seed/crime1/400/260" alt=""/>
+          <p class="crime-caption">ইয়াবা-গাঁজাসহ নিষিদ্ধ ছাত্রলীগ নেতাসহ আটক দুই</p>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <div class="list-news-items-sm">
+          <a href="#" class="lni-sm text-decoration-none"><img src="https://picsum.photos/seed/cr1/60/45" alt="" style="border-radius:4px;min-width:60px;height:45px;object-fit:cover;flex-shrink:0"/><p>হাসিনা-কামালের সাজা বাড়াতে রাষ্ট্রপক্ষের শুনানি আজ</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><img src="https://picsum.photos/seed/cr2/60/45" alt="" style="border-radius:4px;min-width:60px;height:45px;object-fit:cover;flex-shrink:0"/><p>কীর্তনে গিয়ে সংঘবদ্ধ ধর্ষণের শিকার বাকপ্রতিবন্ধী নারী</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><img src="https://picsum.photos/seed/cr3/60/45" alt="" style="border-radius:4px;min-width:60px;height:45px;object-fit:cover;flex-shrink:0"/><p>নসরুল হামিদের 'লুটপাটের সিন্ডিকেটে' বিদ্যুৎভবনের কোটি কোটি টাকা আত্মসাৎ</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><img src="https://picsum.photos/seed/cr4/60/45" alt="" style="border-radius:4px;min-width:60px;height:45px;object-fit:cover;flex-shrink:0"/><p>ট্রাক ধাওয়া করে মিলল কোটির টাকারও বেশি ইয়াবা</p></a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="list-news-items-sm">
+          <a href="#" class="lni-sm text-decoration-none"><img src="https://picsum.photos/seed/cr5/60/45" alt="" style="border-radius:4px;min-width:60px;height:45px;object-fit:cover;flex-shrink:0"/><p>চট্টগ্রামে ডেনসিসিভিল ও গাঁজা সহ গ্রেফতার ১</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><img src="https://picsum.photos/seed/cr6/60/45" alt="" style="border-radius:4px;min-width:60px;height:45px;object-fit:cover;flex-shrink:0"/><p>সুন্দরবনের শেলারচর জেলে পল্লীতে বন দস্যু হানা, ৬ জেলেকে অপহরণ</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><img src="https://picsum.photos/seed/cr7/60/45" alt="" style="border-radius:4px;min-width:60px;height:45px;object-fit:cover;flex-shrink:0"/><p>ভোলায় নিজ বাড়ির সামনে বৃদ্ধকে কুপিয়ে হত্যা</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><img src="https://picsum.photos/seed/cr8/60/45" alt="" style="border-radius:4px;min-width:60px;height:45px;object-fit:cover;flex-shrink:0"/><p>রাজধানীতে মাদকসহ আটক ১৫, র‌্যাবের অভিযান অব্যাহত</p></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ইসলাম + আত্মহত্যা + শিক্ষাঙ্গন ===== -->
+<div class="section-wrapper bg-light-subtle py-4">
+  <div class="container-fluid px-3">
+    <div class="row g-4">
+
+      <div class="col-lg-4">
+        <div class="section-header d-flex align-items-center justify-content-between mb-3">
+          <span class="section-badge green">ইসলাম ও জীবন</span>
+          <a href="#" class="more-link">আরও <i class="fas fa-angle-right"></i></a>
+        </div>
+        <a href="#" class="cat-big-card mb-2 text-decoration-none d-block">
+          <img src="https://picsum.photos/seed/islam1/500/260" alt=""/>
+          <div class="cat-big-overlay"><h6>রামগড়ে যুব রেড ক্রিসেন্টের ইফতার ও দোয়া মাহফিল অনুষ্ঠিত</h6></div>
+        </a>
+        <div class="list-news-items-sm">
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-success" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>গুইমারায় সাংবাদিকদের সম্মানে জামায়াতের ইফতার মাহফিল অনুষ্ঠিত</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-success" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>বাংলাদেশে আজ রমজানের চাঁদ দেখা যাবে?</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-success" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>আজ পবিত্র লাইলাতুল মোবারকা</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-success" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>শবে বরাতে মুসলিম বিশ্বে শান্তির জন্য দোয়ার আহ্বান তারেক রহমানের</p></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="section-header d-flex align-items-center justify-content-between mb-3">
+          <span class="section-badge">আত্মহত্যা</span>
+          <a href="#" class="more-link">আরও <i class="fas fa-angle-right"></i></a>
+        </div>
+        <a href="#" class="cat-big-card mb-2 text-decoration-none d-block">
+          <img src="https://picsum.photos/seed/sui1/500/260" alt=""/>
+          <div class="cat-big-overlay"><h6>ফেসবুক স্ট্যাটাসে ক্ষমা চেয়ে বিএনপি নেতার আত্মহত্যা</h6></div>
+        </a>
+        <div class="list-news-items-sm">
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-danger" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>কুষ্টিয়ায় তিনটি আসনে জামায়াতের জয়, একটিতে বিএনপি</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-danger" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>মহিলা দল নেত্রীর ঝুলন্ত লাশ উদ্ধার</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-danger" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>শেরপুরে এসএনআইয়ের ঝুলন্ত মরদেহ উদ্ধার</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle text-danger" style="font-size:6px;margin-top:6px;flex-shrink:0"></i><p>শিশু সন্তানকে হত্যার পর ছাত্রলীগ নেতার স্ত্রীর আত্মহত্যা</p></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="section-header d-flex align-items-center justify-content-between mb-3">
+          <span class="section-badge" style="background:#1a6b3a">শিক্ষাঙ্গন</span>
+          <a href="#" class="more-link">আরও <i class="fas fa-angle-right"></i></a>
+        </div>
+        <a href="#" class="cat-big-card mb-2 text-decoration-none d-block">
+          <img src="https://picsum.photos/seed/edu1/500/260" alt=""/>
+          <div class="cat-big-overlay"><h6>রামগড়ে প্রাইভেট মাদ্রাসা থেকে বৃত্তি পরীক্ষায় অংশগ্রহণকারী সকল শিক্ষার্থীকে বৃত্তি প্রদান</h6></div>
+        </a>
+        <div class="list-news-items-sm">
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle" style="font-size:6px;color:#1a6b3a;margin-top:6px;flex-shrink:0"></i><p>সোহরাওয়ার্দী উদ্যানে শিক্ষার্থী-সাংবাদিকদের ওপর হামলার ঘটনায় ডাকসুর নিন্দা</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle" style="font-size:6px;color:#1a6b3a;margin-top:6px;flex-shrink:0"></i><p>ডিসি মাসুদের শাস্তি দাবিতে শাহবাগ থানার সামনে কর্মসূচি ঘোষণা</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle" style="font-size:6px;color:#1a6b3a;margin-top:6px;flex-shrink:0"></i><p>চট্টগ্রাম বিশ্ববিদ্যালয়ের সব পরীক্ষা স্থগিত</p></a>
+          <a href="#" class="lni-sm text-decoration-none"><i class="fas fa-circle" style="font-size:6px;color:#1a6b3a;margin-top:6px;flex-shrink:0"></i><p>টানা পাঁচ দিনের ছুটিতে যাচ্ছে শিক্ষা প্রতিষ্ঠান</p></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+  <div class="footer-top">
+    <div class="container-fluid px-3">
+      <div class="row g-4 py-4">
+        <div class="col-lg-4">
+          <img src="/img/logo.png" alt="BDN 24 News" class="footer-logo-img mb-3"/>
+          <p class="footer-desc">সত্যের আলোয়, দেশের কণ্ঠস্বর। আমরা সর্বদা নিরপেক্ষ ও তথ্যনির্ভর সংবাদ পরিবেশনে প্রতিশ্রুতিবদ্ধ।</p>
+          <div class="footer-socials d-flex gap-2 mt-3">
+            <a href="#" class="social-icon facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-icon email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h6 class="footer-heading">বিভাগ</h6>
+          <ul class="footer-links">
+            <li><a href="#">সারাদেশ</a></li>
+            <li><a href="#">জাতীয়</a></li>
+            <li><a href="#">রাজনীতি</a></li>
+            <li><a href="#">অর্থনীতি</a></li>
+            <li><a href="#">খেলাধুলা</a></li>
+            <li><a href="#">বিনোদন</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4">
+          <h6 class="footer-heading">আরও</h6>
+          <ul class="footer-links">
+            <li><a href="#">আন্তর্জাতিক</a></li>
+            <li><a href="#">চিকিৎসা</a></li>
+            <li><a href="#">আইটি বিশ্ব</a></li>
+            <li><a href="#">ফটো গ্যালারি</a></li>
+            <li><a href="#">ভিডিও</a></li>
+            <li><a href="#">সম্পাদকীয়</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <h6 class="footer-heading">যোগাযোগ করুন</h6>
+          <ul class="footer-contact">
+            <li><i class="fas fa-map-marker-alt"></i> আরামবাগ, মতিঝিল, ঢাকা-১০০০</li>
+            <li><i class="fas fa-phone"></i> +৮৮০১৮২৮৯১৫০২০, +৮৮ ০১৯৭৮৯১৫০২০</li>
+            <li><i class="fas fa-envelope"></i> info@bdn24news.com</li>
+            <li><i class="fas fa-envelope"></i> contact@bdn24news.com</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-mid py-2">
+    <div class="container-fluid px-3">
+      <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+        <div class="footer-policy-links d-flex gap-3">
+          <a href="#">গোপনীয়তা নীতি</a>
+          <a href="#">যোগাযোগ</a>
+          <a href="#">ই-পেপার</a>
+          <a href="#">কনভার্টার</a>
+        </div>
+        <div class="footer-socials d-flex gap-2">
+          <a href="#" class="social-icon facebook sm"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon linkedin sm"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-icon instagram sm"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon youtube sm"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon email sm"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom py-3">
+    <div class="container-fluid px-3">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <img src="/img/logo.png" alt="BDN 24" class="footer-bottom-logo mb-1"/>
+          <p class="mb-0" style="font-size:12px;color:#aaa">© ২০২৬ BDN 24 নিউজ। সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
+        <div class="col-md-6 text-md-end mt-2 mt-md-0">
+          <p class="mb-0" style="font-size:12px;color:#aaa">
+            যোগাযোগ: ০১৮২৮৯১৫০২০ | ই-মেইল: info@bdn24news.com
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
