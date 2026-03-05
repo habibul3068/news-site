@@ -369,6 +369,7 @@ ul {
   gap: 40px;
   animation: ticker-scroll 35s linear infinite;
   white-space: nowrap;
+  will-change: transform;
 }
 .ticker-content span {
   color: var(--text);
@@ -378,6 +379,7 @@ ul {
   display: inline-block;
   color: #555;
   animation: ticker-scroll 50s linear infinite;
+  will-change: transform;
 }
 
 @keyframes ticker-scroll {

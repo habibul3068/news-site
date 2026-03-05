@@ -87,8 +87,20 @@ function updateClock() {
 updateClock();
 setInterval(updateClock, 1000);
 
-// --- Ticker content ---
+// --- Ticker content duplication for seamless looping ---
 const tickerContent = document.getElementById('tickerContent');
+const noticeText = document.querySelector('.notice-text span');
+
 if (tickerContent) {
-  tickerContent.innerHTML += tickerContent.innerHTML;
+  // Use a slight delay to ensure content is rendered before duplicating
+  // This helps with width calculations if needed in the future
+  tickerContent.innerHTML += '&nbsp;&nbsp;&nbsp;&nbsp;' + tickerContent.innerHTML;
+}
+
+if (noticeText) {
+  // The notice text already has some duplication in HTML, but let's ensure it's enough
+  // and has proper spacing if it loops.
+  if (!noticeText.innerHTML.includes('&nbsp;')) {
+     noticeText.innerHTML += '&nbsp;&nbsp;&nbsp;&nbsp;' + noticeText.innerHTML;
+  }
 }
