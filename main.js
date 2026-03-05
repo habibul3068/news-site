@@ -48,26 +48,11 @@ document.querySelectorAll('.desktop-nav .nav-item').forEach(link => {
 // --- Navbar sticky and scroll behavior ---
 const stickyWrapper = document.querySelector('.sticky-top-wrapper');
 if (stickyWrapper) {
-  const placeholder = document.createElement('div');
-  placeholder.id = 'headerPlaceholder';
-  stickyWrapper.parentNode.insertBefore(placeholder, stickyWrapper);
-
-  function updatePlaceholderHeight() {
-    if (!stickyWrapper.classList.contains('scrolled')) {
-      placeholder.style.height = stickyWrapper.offsetHeight + 'px';
-    }
-  }
-
-  updatePlaceholderHeight();
-  window.addEventListener('resize', updatePlaceholderHeight);
-  setTimeout(updatePlaceholderHeight, 500);
-
   window.addEventListener('scroll', () => {
     if (window.scrollY > 100) {
       stickyWrapper.classList.add('scrolled');
     } else {
       stickyWrapper.classList.remove('scrolled');
-      updatePlaceholderHeight();
     }
   });
 }
